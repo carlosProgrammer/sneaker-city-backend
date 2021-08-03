@@ -18,8 +18,8 @@ export class SneakersController {
     return this.sneakersService.findAll();
   }
 
-  @Get(':sneakerID')
-  async findById(@Param('sneakerID') _id: number) {
+  @Get(':_id')
+  async findById(@Param('_id') _id: number) {
     return this.sneakersService.findOne(_id)
   }
 

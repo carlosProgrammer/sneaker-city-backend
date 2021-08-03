@@ -23,8 +23,8 @@ export class Sneaker {
   @Prop()
   price: number;
 
-  @Prop([Number])
-  size: string[];
+  @Prop()
+  sizes: string[];
 
   @Prop()
   gender_category: string;
