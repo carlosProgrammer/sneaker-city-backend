@@ -15,11 +15,15 @@ export class SneakersService {
   }
 
   async findAll(): Promise<Sneaker[]> {
-    return this.sneakerModel.find().exec();
+    return this.sneakerModel.find().sort({release_date: 'desc'}).limit(10).exec();
   }
   
-  async findOneByCategory(gender_category: string): Promise<Sneaker[]> {
+  async findByCategory(gender_category: string): Promise<Sneaker[]> {
     return this.sneakerModel.find({ gender_category });
+  }
+
+  async findOne(_id: number): Promise<Sneaker> {
+    return await this.sneakerModel.findOne({ _id });
   }
 
   update(id: number, updateSneakerDto: UpdateSneakerDto) {

@@ -1,7 +1,8 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Res, NotFoundException, HttpStatus } from '@nestjs/common';
 import { SneakersService } from './sneakers.service';
 import { CreateSneakerDto } from './dto/create-sneaker.dto';
 import { UpdateSneakerDto } from './dto/update-sneaker.dto';
+import { ValidateObjectId } from 'src/shared/pipes/validate-object-id.pipes';
 
 @Controller('sneakers')
 export class SneakersController {
@@ -17,9 +18,14 @@ export class SneakersController {
     return this.sneakersService.findAll();
   }
 
-  @Get(':gender_category')
-  findOneBycategory(@Param('gender_category') gender_category: string) {
-    return this.sneakersService.findOneByCategory(gender_category);
+  @Get(':sneakerID')
+  async findById(@Param('sneakerID') _id: number) {
+    return this.sneakersService.findOne(_id)
+  }
+
+  @Get('category/:gender_category')
+  findBycategory(@Param('gender_category') gender_category: string) {
+    return this.sneakersService.findByCategory(gender_category);
   }
 
   @Patch(':id')
