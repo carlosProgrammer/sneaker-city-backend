@@ -15,6 +15,9 @@ export class Sneaker {
   image: string;
 
   @Prop()
+  brandLogo: string;
+
+  @Prop()
   release_date: Date;
 
   @Prop()
