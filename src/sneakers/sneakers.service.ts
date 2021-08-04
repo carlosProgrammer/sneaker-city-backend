@@ -15,9 +15,7 @@ export class SneakersService {
   }
 
   async findAll(): Promise<Sneaker[]> {
-    return this.sneakerModel.find({
-      'size.available': {$gte: 1}
-    }).sort({release_date: 'desc'}).exec();
+    return this.sneakerModel.find({}).sort({release_date: 'desc'}).exec();
   }
   
   async findByCategory(gender_category: string): Promise<Sneaker[]> {
